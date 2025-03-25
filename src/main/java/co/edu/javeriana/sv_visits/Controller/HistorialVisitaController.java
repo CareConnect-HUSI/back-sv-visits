@@ -21,13 +21,13 @@ public class HistorialVisitaController {
     @Autowired
     private HistorialVisitaService historialService;
 
-    //http://localhost:8080/historial-visitas
+    //http://localhost:8082/historial-visitas
     @PostMapping
     public ResponseEntity<HistorialVisitaEntity> create(@RequestBody HistorialVisitaEntity historial) {
         return ResponseEntity.ok(historialService.save(historial));
     }
 
-    //http://localhost:8080/historial-visitas/visita/1
+    //http://localhost:8082/historial-visitas/visita/1
     @GetMapping("/visita/{idVisita}")
     public ResponseEntity<List<HistorialVisitaEntity>> getByVisita(@PathVariable Long idVisita) {
         return ResponseEntity.ok(historialService.findByVisita(idVisita));
