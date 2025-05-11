@@ -6,99 +6,134 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
+import jakarta.validation.constraints.NotNull;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Entity
 @Table(name = "visita")
 public class VisitaEntity {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "idPaciente", nullable = false)
-    private Long idPaciente;
-    @Column(name = "idEnfermera", nullable = false)
-    private Long idEnfermera;
-    private String fechaVisita;
-    private String horaInicio;
-    private String horaFin;
-    private String estado;
-    private String orden;
 
+    @NotNull
+    @Column(name = "actividad_paciente_visita_id", nullable = false)
+    private Long actividadPacienteVisitaId;
+
+    @NotNull
+    @Column(name = "enfermera_id", nullable = false)
+    private Long enfermeraId;
+
+    @Column(name = "fecha_visita")
+    private LocalDate fechaVisita;
+
+    @Column(name = "hora_inicio_ejecutada")
+    private LocalTime horaInicioEjecutada;
+
+    @Column(name = "hora_fin_ejecutada")
+    private LocalTime horaFinEjecutada;
+
+    @Column(name = "estado")
+    private String estado;
+
+    @Column(name = "hora_inicio_calculada")
+    private LocalTime horaInicioCalculada;
+
+    @Column(name = "hora_fin_calculada")
+    private LocalTime horaFinCalculada;
+
+    // Constructor vacío
     public VisitaEntity() {
     }
 
-    public VisitaEntity(Long id, Long idPaciente, Long idEnfermera, String fechaVisita, String horaInicio, String horaFin, String estado, String orden) {
+    // Constructor con todos los campos
+    public VisitaEntity(Long id, Long actividadPacienteVisitaId, Long enfermeraId, LocalDate fechaVisita,
+                        LocalTime horaInicioEjecutada, LocalTime horaFinEjecutada, String estado,
+                        LocalTime horaInicioCalculada, LocalTime horaFinCalculada) {
         this.id = id;
-        this.idPaciente = idPaciente;
-        this.idEnfermera = idEnfermera;
+        this.actividadPacienteVisitaId = actividadPacienteVisitaId;
+        this.enfermeraId = enfermeraId;
         this.fechaVisita = fechaVisita;
-        this.horaInicio = horaInicio;
-        this.horaFin = horaFin;
+        this.horaInicioEjecutada = horaInicioEjecutada;
+        this.horaFinEjecutada = horaFinEjecutada;
         this.estado = estado;
-        this.orden = orden;
+        this.horaInicioCalculada = horaInicioCalculada;
+        this.horaFinCalculada = horaFinCalculada;
     }
 
+    // Getters y Setters
     public Long getId() {
         return id;
-    }
-
-    public Long getIdPaciente() {
-        return idPaciente;
-    }
-
-    public Long getIdEnfermera() {
-        return idEnfermera;
-    }
-
-    public String getFechaVisita() {
-        return fechaVisita;
-    }
-
-    public String getHoraInicio() {
-        return horaInicio;
-    }
-
-    public String getHoraFin() {
-        return horaFin;
-    }
-
-    public String getEstado() {
-        return estado;
-    }
-
-    public String getOrden() {
-        return orden;
     }
 
     public void setId(Long id) {
         this.id = id;
     }
 
-    public void setIdPaciente(Long idPaciente) {
-        this.idPaciente = idPaciente;
+    public Long getActividadPacienteVisitaId() {
+        return actividadPacienteVisitaId;
     }
 
-    public void setIdEnfermera(Long idEnfermera) {
-        this.idEnfermera = idEnfermera;
+    public void setActividadPacienteVisitaId(Long actividadPacienteVisitaId) {
+        this.actividadPacienteVisitaId = actividadPacienteVisitaId;
     }
 
-    public void setFechaVisita(String fechaVisita) {
+    public Long getEnfermeraId() {
+        return enfermeraId;
+    }
+
+    public void setEnfermeraId(Long enfermeraId) {
+        this.enfermeraId = enfermeraId;
+    }
+
+    public LocalDate getFechaVisita() {
+        return fechaVisita;
+    }
+
+    public void setFechaVisita(LocalDate fechaVisita) {
         this.fechaVisita = fechaVisita;
     }
 
-    public void setHoraInicio(String horaInicio) {
-        this.horaInicio = horaInicio;
+    public LocalTime getHoraInicioEjecutada() {
+        return horaInicioEjecutada;
     }
 
-    public void setHoraFin(String horaFin) {
-        this.horaFin = horaFin;
+    public void setHoraInicioEjecutada(LocalTime horaInicioEjecutada) {
+        this.horaInicioEjecutada = horaInicioEjecutada;
+    }
+
+    public LocalTime getHoraFinEjecutada() {
+        return horaFinEjecutada;
+    }
+
+    public void setHoraFinEjecutada(LocalTime horaFinEjecutada) {
+        this.horaFinEjecutada = horaFinEjecutada;
+    }
+
+    public String getEstado() {
+        return estado;
     }
 
     public void setEstado(String estado) {
         this.estado = estado;
     }
 
-    public void setOrden(String orden) {
-        this.orden = orden;
+    public LocalTime getHoraInicioCalculada() {
+        return horaInicioCalculada;
+    }
+
+    public void setHoraInicioCalculada(LocalTime horaInicioCalculada) {
+        this.horaInicioCalculada = horaInicioCalculada;
+    }
+
+    public LocalTime getHoraFinCalculada() {
+        return horaFinCalculada;
+    }
+
+    public void setHoraFinCalculada(LocalTime horaFinCalculada) {
+        this.horaFinCalculada = horaFinCalculada;
     }
 }

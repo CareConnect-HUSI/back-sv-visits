@@ -7,6 +7,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import co.edu.javeriana.sv_visits.Entity.VisitaEntity;
 
 public interface VisitaRepository extends JpaRepository<VisitaEntity, Long> {
-    List<VisitaEntity> findByIdPaciente(Long idPaciente);
+    // List<VisitaEntity> findByIdPaciente(Long paciente_id);
 }
 

@@ -18,7 +18,7 @@ public class VisitaService {
         return visitaRepository.save(visita);
     }
 
-    public List<VisitaEntity> findByPaciente(Long idPaciente) {
-        return visitaRepository.findByIdPaciente(idPaciente);
-    }
+    // public List<VisitaEntity> findByPaciente(Long idPaciente) {
+    //     return visitaRepository.findByIdPaciente(idPaciente);
+    // }
 }

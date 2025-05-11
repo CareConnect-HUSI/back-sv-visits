@@ -21,15 +21,16 @@ public class VisitaController {
     @Autowired
     private VisitaService visitaService;
 
-    //http://localhost:8080/visitas
+    //http://localhost:8082/visitas
     @PostMapping
     public ResponseEntity<VisitaEntity> create(@RequestBody VisitaEntity visita) {
+        System.out.println("Se recibió la petición");
         return ResponseEntity.ok(visitaService.save(visita));
     }
 
-    //http://localhost:8080/visitas/paciente/1
-    @GetMapping("/paciente/{idPaciente}")
-    public ResponseEntity<List<VisitaEntity>> getByPaciente(@PathVariable Long idPaciente) {
-        return ResponseEntity.ok(visitaService.findByPaciente(idPaciente));
-    }
+    //http://localhost:8082/visitas/paciente/1
+    // @GetMapping("/paciente/{idPaciente}")
+    // public ResponseEntity<List<VisitaEntity>> getByPaciente(@PathVariable Long idPaciente) {
+    //     return ResponseEntity.ok(visitaService.findByPaciente(idPaciente));
+    // }
 }
