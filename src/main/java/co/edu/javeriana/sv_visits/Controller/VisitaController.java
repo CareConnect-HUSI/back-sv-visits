@@ -28,7 +28,6 @@ public class VisitaController {
     //http://localhost:8082/visitas
     @PostMapping
     public ResponseEntity<VisitaEntity> create(@RequestBody VisitaEntity visita) {
-        System.out.println("Se recibió la petición");
         return ResponseEntity.ok(visitaService.save(visita));
     }
 
