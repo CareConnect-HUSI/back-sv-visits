@@ -1,7 +1,6 @@
 package co.edu.javeriana.sv_visits.Controller;
 
 import java.time.LocalDate;
-import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -10,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -46,4 +46,23 @@ public class VisitaController {
     // public ResponseEntity<List<VisitaEntity>> getByPaciente(@PathVariable Long idPaciente) {
     //     return ResponseEntity.ok(visitaService.findByPaciente(idPaciente));
     // }
+
+    // PUT /visitas/{id}
+    @PutMapping("/{id}")
+    public ResponseEntity<VisitaEntity> updateVisit(
+        @PathVariable Long id,
+        @RequestBody VisitaEntity updatedVisit
+    ) {
+        VisitaEntity existing = visitaService.findById(id);
+        if (existing == null) {
+            return ResponseEntity.notFound().build();
+        }
+
+        existing.setEnfermeraId(updatedVisit.getEnfermeraId());
+        existing.setHoraInicioCalculada(updatedVisit.getHoraInicioCalculada());
+        existing.setHoraFinCalculada(updatedVisit.getHoraFinCalculada());
+
+        return ResponseEntity.ok(visitaService.save(existing));
+    }
+
 }
