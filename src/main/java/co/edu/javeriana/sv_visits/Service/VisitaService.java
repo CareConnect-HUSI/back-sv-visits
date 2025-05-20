@@ -1,6 +1,7 @@
 package co.edu.javeriana.sv_visits.Service;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -36,4 +37,7 @@ public class VisitaService {
             .orElseThrow(() -> new RuntimeException("Visita no encontrada con ID: " + id));
     }
 
+    public List<VisitaEntity> findByEnfermeraId(Long enfermeraId) {
+        return visitaRepository.findByEnfermeraId(enfermeraId);
+    }
 }

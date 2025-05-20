@@ -1,6 +1,7 @@
 package co.edu.javeriana.sv_visits.Controller;
 
 import java.time.LocalDate;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -28,6 +29,7 @@ public class VisitaController {
     //http://localhost:8082/visitas
     @PostMapping
     public ResponseEntity<VisitaEntity> create(@RequestBody VisitaEntity visita) {
+        System.out.println("✅ Visita guardada con ID: " + visita.getId());
         return ResponseEntity.ok(visitaService.save(visita));
     }
 
@@ -63,6 +65,11 @@ public class VisitaController {
         existing.setHoraFinCalculada(updatedVisit.getHoraFinCalculada());
 
         return ResponseEntity.ok(visitaService.save(existing));
+    }
+
+    @GetMapping("/enfermera/{enfermeraId}")
+    public ResponseEntity<List<VisitaEntity>> getVisitasByEnfermeraId(@PathVariable Long enfermeraId) {
+        return ResponseEntity.ok(visitaService.findByEnfermeraId(enfermeraId));
     }
 
 }
